@@ -1,0 +1,122 @@
+[gd_scene load_steps=8 format=3 uid="uid://dsevmy86siit4"]
+
+[ext_resource type="Script" path="res://scripts/leaderBoardScene/LeaderboardMain.gd" id="1_26sry"]
+[ext_resource type="Texture2D" uid="uid://86lxx63yvedu" path="res://assets/leaderboardScene/bg/background_one_piece_by_xxhxaxx_d5jxfe6-fullview.jpg" id="2_0u2sj"]
+[ext_resource type="Texture2D" uid="uid://grcbhat57ovw" path="res://assets/leaderboardScene/bg/bg.png" id="3_e3qw2"]
+[ext_resource type="FontFile" uid="uid://cs8jcn8wcxp63" path="res://assets/mainMenu/font/TheRumIsGone-Wy1nG.ttf" id="4_w8pkb"]
+[ext_resource type="Texture2D" uid="uid://bwo7cgrd5dt5" path="res://assets/leaderboardScene/buttons/pirate.png" id="5_i0hwp"]
+[ext_resource type="StyleBox" uid="uid://bgboniungsjl1" path="res://scenes/mainMenu/main_menuButton.tres" id="6_crwiu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vqrte"]
+bg_color = Color(0, 0.662745, 0.827451, 0)
+
+[node name="Leaderboard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_26sry")
+
+[node name="bg" type="Node2D" parent="."]
+
+[node name="BackgroundOnePieceByXxhxaxxD5Jxfe6-fullview" type="Sprite2D" parent="bg"]
+position = Vector2(577.5, 428.75)
+scale = Vector2(1.12598, 1.47565)
+texture = ExtResource("2_0u2sj")
+
+[node name="Bg" type="Sprite2D" parent="bg"]
+modulate = Color(1, 1, 1, 0.815686)
+position = Vector2(562, 411)
+texture = ExtResource("3_e3qw2")
+
+[node name="labelSetup" type="Node2D" parent="."]
+
+[node name="leaderboard" type="Label" parent="labelSetup"]
+offset_left = 131.0
+offset_top = 214.0
+offset_right = 908.0
+offset_bottom = 310.0
+rotation = -0.137071
+theme_override_colors/font_color = Color(0.180005, 0.180005, 0.180005, 1)
+theme_override_fonts/font = ExtResource("4_w8pkb")
+theme_override_font_sizes/font_size = 76
+text = "LEADERBOARD"
+
+[node name="rank" type="Label" parent="labelSetup"]
+offset_left = 98.0
+offset_top = 319.0
+offset_right = 287.0
+offset_bottom = 378.0
+rotation = -0.137071
+theme_override_colors/font_color = Color(0.1985, 0.343987, 0.819703, 1)
+theme_override_fonts/font = ExtResource("4_w8pkb")
+theme_override_font_sizes/font_size = 46
+text = "RANK"
+
+[node name="name" type="Label" parent="labelSetup"]
+offset_left = 449.0
+offset_top = 261.0
+offset_right = 638.0
+offset_bottom = 320.0
+rotation = -0.137071
+theme_override_colors/font_color = Color(0.1985, 0.343987, 0.819703, 1)
+theme_override_fonts/font = ExtResource("4_w8pkb")
+theme_override_font_sizes/font_size = 46
+text = "NAME"
+
+[node name="score" type="Label" parent="labelSetup"]
+offset_left = 760.0
+offset_top = 211.0
+offset_right = 953.0
+offset_bottom = 270.0
+rotation = -0.137071
+theme_override_colors/font_color = Color(0.1985, 0.343987, 0.819703, 1)
+theme_override_fonts/font = ExtResource("4_w8pkb")
+theme_override_font_sizes/font_size = 46
+text = "score"
+
+[node name="BackButton" type="Node2D" parent="."]
+
+[node name="Pirate" type="Sprite2D" parent="BackButton"]
+position = Vector2(961, 768)
+texture = ExtResource("5_i0hwp")
+
+[node name="BackButton" type="Button" parent="BackButton"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 912.0
+offset_top = 731.0
+offset_right = 1125.0
+offset_bottom = 803.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_w8pkb")
+theme_override_font_sizes/font_size = 57
+theme_override_styles/normal = SubResource("StyleBoxFlat_vqrte")
+theme_override_styles/hover = ExtResource("6_crwiu")
+text = "BACK"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 106.0
+offset_top = 308.0
+offset_right = -162.0
+offset_bottom = -133.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.153248
+
+[node name="Player_Names" type="GridContainer" parent="ScrollContainer"]
+layout_mode = 2
+columns = 3
+
+[connection signal="pressed" from="BackButton/BackButton" to="." method="_on_back_button_pressed"]

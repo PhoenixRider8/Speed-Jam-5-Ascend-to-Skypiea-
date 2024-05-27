@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://cyk54qo25d3m0"]
+
+[ext_resource type="Texture2D" uid="uid://3j8gqbgvpppu" path="res://assets/gameScene/players/2. Zoro/zoro_attack.png" id="1_4vlvc"]
+[ext_resource type="Script" path="res://scripts/gameScene/player/2. Zoro/zoro.gd" id="1_pglpx"]
+[ext_resource type="Texture2D" uid="uid://po0l5hmtrtal" path="res://assets/gameScene/players/2. Zoro/zoro_idle.png" id="2_2185a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mewqw"]
+atlas = ExtResource("1_4vlvc")
+region = Rect2(0, 0, 191, 188)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkqif"]
+atlas = ExtResource("1_4vlvc")
+region = Rect2(191, 0, 191, 188)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3hlv"]
+atlas = ExtResource("1_4vlvc")
+region = Rect2(382, 0, 191, 188)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihpoc"]
+atlas = ExtResource("1_4vlvc")
+region = Rect2(573, 0, 191, 188)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xvgq"]
+atlas = ExtResource("1_4vlvc")
+region = Rect2(764, 0, 191, 188)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpg17"]
+atlas = ExtResource("1_4vlvc")
+region = Rect2(955, 0, 191, 188)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1jqqx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mewqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkqif")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3hlv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihpoc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xvgq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpg17")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2185a")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Zoro" type="Area2D"]
+script = ExtResource("1_pglpx")
+
+[node name="ZoroSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1jqqx")
+animation = &"attack"
+autoplay = "idle"
+
+[node name="Slashcollection" type="Node" parent="."]
+
+[connection signal="animation_finished" from="ZoroSprite" to="." method="_on_zoro_sprite_animation_finished"]

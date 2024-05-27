@@ -1,0 +1,87 @@
+[gd_scene load_steps=12 format=3 uid="uid://b8ojlcd6jtpat"]
+
+[ext_resource type="Script" path="res://scripts/gameScene/player/GoingMerry.gd" id="1_adw7n"]
+[ext_resource type="Texture2D" uid="uid://c2arbjx3scmdm" path="res://assets/gameScene/ship/frontShip.png" id="1_ndgto"]
+[ext_resource type="Texture2D" uid="uid://cm2vqx4j40syg" path="res://assets/gameScene/ship/waves.png" id="2_gdk2a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6s7j"]
+atlas = ExtResource("2_gdk2a")
+region = Rect2(0, 0, 723, 267)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nt4sg"]
+atlas = ExtResource("2_gdk2a")
+region = Rect2(723, 0, 723, 267)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqott"]
+atlas = ExtResource("2_gdk2a")
+region = Rect2(1446, 0, 723, 267)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywegn"]
+atlas = ExtResource("2_gdk2a")
+region = Rect2(2169, 0, 723, 267)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wt7dv"]
+atlas = ExtResource("2_gdk2a")
+region = Rect2(2892, 0, 723, 267)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_puy3l"]
+atlas = ExtResource("2_gdk2a")
+region = Rect2(3615, 0, 723, 267)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v5dog"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6s7j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nt4sg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqott")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywegn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wt7dv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_puy3l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5o3aa"]
+size = Vector2(71, 70.6997)
+
+[node name="GoingMerry" type="CharacterBody2D"]
+position = Vector2(564, 479)
+scale = Vector2(1.515, 1.515)
+script = ExtResource("1_adw7n")
+
+[node name="Waves" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.752528, 27.4983)
+rotation = -1.56823
+scale = Vector2(0.365854, 0.490517)
+sprite_frames = SubResource("SpriteFrames_v5dog")
+autoplay = "default"
+frame = 1
+frame_progress = 0.977874
+
+[node name="GoingMerrySprite" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_ndgto")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, -38.6502)
+shape = SubResource("RectangleShape2D_5o3aa")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-7.26073, -68.6469)
+zoom = Vector2(1.225, 1.225)
+limit_left = 0
+limit_right = 1152
+limit_bottom = 848

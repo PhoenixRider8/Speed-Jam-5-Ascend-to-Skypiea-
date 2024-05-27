@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://ca4moepmgywp7"]
+
+[ext_resource type="Script" path="res://scripts/gameScene/enemies/sea_king.gd" id="1_0pcq7"]
+[ext_resource type="Texture2D" uid="uid://poekxj08ary1" path="res://assets/gameScene/enemies/2. SeaKing/SeaKing.png" id="1_joply"]
+[ext_resource type="PackedScene" uid="uid://ddiefnlko3sb" path="res://scenes/gameScene/healthbar/health_bar.tscn" id="3_wa82p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssqew"]
+atlas = ExtResource("1_joply")
+region = Rect2(0, 0, 64, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88ded"]
+atlas = ExtResource("1_joply")
+region = Rect2(64, 0, 64, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxlgm"]
+atlas = ExtResource("1_joply")
+region = Rect2(128, 0, 64, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61al7"]
+atlas = ExtResource("1_joply")
+region = Rect2(192, 0, 64, 82)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_78ov2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssqew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88ded")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxlgm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61al7")
+}],
+"loop": false,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xp1nl"]
+radius = 17.0
+
+[node name="SeaKing" type="Area2D"]
+scale = Vector2(3.57, 3.57)
+script = ExtResource("1_0pcq7")
+
+[node name="seakingSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_78ov2")
+autoplay = "default"
+frame = 3
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xp1nl")
+
+[node name="HealthBar" parent="." instance=ExtResource("3_wa82p")]
+offset_left = -62.465
+offset_top = -24.3697
+offset_right = 64.535
+offset_bottom = -20.3697
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

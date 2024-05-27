@@ -1,0 +1,10 @@
+const firebaseConfig = {
+  apiKey: "AIzaSyCOyBctGnogr9Ahag3mb0y6t_Ic6S-9P94",
+  authDomain: "ascent-to-skypeia.firebaseapp.com",
+  databaseURL: "https://ascent-to-skypeia-default-rtdb.firebaseio.com",
+  projectId: "ascent-to-skypeia",
+  storageBucket: "ascent-to-skypeia.appspot.com",
+  messagingSenderId: "411601955572",
+  appId: "1:411601955572:web:c7376f8a5a854efa94cca1",
+  measurementId: "G-KN71YK28TZ"
+};

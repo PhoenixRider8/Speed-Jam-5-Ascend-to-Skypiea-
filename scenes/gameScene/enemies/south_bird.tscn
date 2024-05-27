@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://bfx45inh0ml6i"]
+
+[ext_resource type="Texture2D" uid="uid://4xq56x0psw02" path="res://assets/gameScene/enemies/3. SouthBird/southBirdFly.png" id="1_smldu"]
+[ext_resource type="Script" path="res://scripts/gameScene/enemies/south_bird.gd" id="1_ui6qo"]
+[ext_resource type="PackedScene" uid="uid://ddiefnlko3sb" path="res://scenes/gameScene/healthbar/health_bar.tscn" id="3_ckthd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igtcg"]
+atlas = ExtResource("1_smldu")
+region = Rect2(0, 0, 91, 113)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qekrm"]
+atlas = ExtResource("1_smldu")
+region = Rect2(91, 0, 91, 113)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4t31h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igtcg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qekrm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eoudc"]
+radius = 24.3311
+
+[node name="SouthBird" type="Area2D"]
+script = ExtResource("1_ui6qo")
+
+[node name="southbirdSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4t31h")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, 2)
+shape = SubResource("CircleShape2D_eoudc")
+
+[node name="HealthBar" parent="." instance=ExtResource("3_ckthd")]
+offset_left = -45.0
+offset_top = -59.0
+offset_right = 45.0
+offset_bottom = -55.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

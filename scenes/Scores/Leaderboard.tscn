@@ -1,0 +1,111 @@
+[gd_scene load_steps=14 format=3 uid="uid://b2h8ok8yfc7wb"]
+
+[ext_resource type="Script" path="res://addons/silent_wolf/Scores/Leaderboard.gd" id="1"]
+[ext_resource type="Theme" uid="uid://d2eakbmaefnt6" path="res://addons/silent_wolf/assets/themes/sw_theme.tres" id="2_ixaq4"]
+[ext_resource type="PackedScene" uid="uid://clllbf6am8qdf" path="res://addons/silent_wolf/common/SWButton.tscn" id="4"]
+[ext_resource type="FontFile" uid="uid://cs8jcn8wcxp63" path="res://assets/mainMenu/font/TheRumIsGone-Wy1nG.ttf" id="4_j208w"]
+[ext_resource type="Texture2D" uid="uid://86lxx63yvedu" path="res://assets/leaderboardScene/bg/background_one_piece_by_xxhxaxx_d5jxfe6-fullview.jpg" id="4_vjabo"]
+[ext_resource type="Texture2D" uid="uid://bwo7cgrd5dt5" path="res://assets/leaderboardScene/buttons/pirate.png" id="5_jjtbu"]
+[ext_resource type="Texture2D" uid="uid://cnuiawk0b0ld7" path="res://assets/leaderboardScene/buttons/pirate1.png" id="6_sudio"]
+[ext_resource type="Texture2D" uid="uid://bvyj544ym66lx" path="res://assets/leaderboardScene/pirateIcon/firstPlace.png" id="8_4cpps"]
+[ext_resource type="Texture2D" uid="uid://dp6s1d30w1fdd" path="res://assets/leaderboardScene/pirateIcon/otherPlace.png" id="9_bg3rq"]
+[ext_resource type="AudioStream" uid="uid://cvdswap3ret56" path="res://assets/music/one piece op song (beepbox)/pizzicato string version.mp3" id="10_2ohl4"]
+
+[sub_resource type="Theme" id="Theme_j1gah"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qmmp5"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ahec4"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Leaderboard" type="Node2D"]
+script = ExtResource("1")
+
+[node name="BackgroundOnePieceByXxhxaxxD5Jxfe6-fullview" type="Sprite2D" parent="."]
+position = Vector2(585, 420.25)
+scale = Vector2(1.11719, 1.45304)
+texture = ExtResource("4_vjabo")
+
+[node name="OldBoard" type="MarginContainer" parent="."]
+visible = false
+
+[node name="HighScores" type="TextureRect" parent="OldBoard"]
+layout_mode = 2
+
+[node name="Board" type="VBoxContainer" parent="."]
+offset_left = -194.0
+offset_top = -195.0
+offset_right = 1312.0
+offset_bottom = 872.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_ixaq4")
+theme_override_constants/separation = 48
+alignment = 1
+
+[node name="TitleContainer" type="CenterContainer" parent="Board"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Board/TitleContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_j208w")
+theme_override_font_sizes/font_size = 72
+text = "Leaderboard"
+horizontal_alignment = 1
+
+[node name="MessageContainer" type="CenterContainer" parent="Board"]
+visible = false
+layout_mode = 2
+
+[node name="TextMessage" type="Label" parent="Board/MessageContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Loading scores..."
+
+[node name="HighScores" type="CenterContainer" parent="Board"]
+layout_mode = 2
+theme = SubResource("Theme_j1gah")
+
+[node name="ScoreItemContainer" type="VBoxContainer" parent="Board/HighScores"]
+layout_mode = 2
+
+[node name="CloseButtonContainer" type="CenterContainer" parent="Board"]
+layout_mode = 2
+
+[node name="Pirate" type="Sprite2D" parent="Board/CloseButtonContainer"]
+position = Vector2(583, 46)
+texture = ExtResource("5_jjtbu")
+
+[node name="Pirate1" type="Sprite2D" parent="Board/CloseButtonContainer"]
+position = Vector2(866.25, 46)
+scale = Vector2(1.65349, 1)
+texture = ExtResource("6_sudio")
+
+[node name="CloseButton" parent="Board/CloseButtonContainer" instance=ExtResource("4")]
+custom_minimum_size = Vector2(600, 80)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_j208w")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_qmmp5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ahec4")
+text = "Close Leaderboard"
+
+[node name="FirstPlace" type="Sprite2D" parent="."]
+position = Vector2(149, 113)
+scale = Vector2(0.483986, 0.493243)
+texture = ExtResource("8_4cpps")
+
+[node name="OtherPlace" type="Sprite2D" parent="."]
+position = Vector2(1025, 124.5)
+scale = Vector2(0.616, 0.534)
+texture = ExtResource("9_bg3rq")
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_2ohl4")
+autoplay = true
+
+[connection signal="pressed" from="Board/CloseButtonContainer/CloseButton" to="." method="_on_CloseButton_pressed"]

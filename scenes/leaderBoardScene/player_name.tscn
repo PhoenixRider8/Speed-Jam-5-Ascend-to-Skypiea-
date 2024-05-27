@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=3 uid="uid://dcx2uwpe2m0b6"]
+
+[ext_resource type="Script" path="res://scripts/leaderBoardScene/player_name.gd" id="1_6j3vy"]
+[ext_resource type="Texture2D" uid="uid://86lxx63yvedu" path="res://assets/leaderboardScene/bg/background_one_piece_by_xxhxaxx_d5jxfe6-fullview.jpg" id="1_lbtkb"]
+[ext_resource type="FontFile" uid="uid://cs8jcn8wcxp63" path="res://assets/mainMenu/font/TheRumIsGone-Wy1nG.ttf" id="2_buycw"]
+[ext_resource type="Texture2D" uid="uid://bwo7cgrd5dt5" path="res://assets/leaderboardScene/buttons/pirate.png" id="4_rqc21"]
+[ext_resource type="StyleBox" uid="uid://bgboniungsjl1" path="res://scenes/mainMenu/main_menuButton.tres" id="5_ayd61"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xxjrc"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="PlayerName" type="CanvasLayer"]
+script = ExtResource("1_6j3vy")
+
+[node name="Input" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundOnePieceByXxhxaxxD5Jxfe6-fullview" type="Sprite2D" parent="Input"]
+position = Vector2(575.5, 426.25)
+scale = Vector2(1.12012, 1.47391)
+texture = ExtResource("1_lbtkb")
+
+[node name="LineEdit" type="LineEdit" parent="Input"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -475.0
+offset_top = -45.0
+offset_right = 456.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_buycw")
+theme_override_font_sizes/font_size = 66
+
+[node name="EnterButton" type="Node2D" parent="Input"]
+
+[node name="Pirate" type="Sprite2D" parent="Input/EnterButton"]
+position = Vector2(560, 560)
+scale = Vector2(1.04688, 1)
+texture = ExtResource("4_rqc21")
+
+[node name="Enter" type="Button" parent="Input/EnterButton"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 506.0
+offset_top = 526.0
+offset_right = 733.0
+offset_bottom = 593.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_buycw")
+theme_override_font_sizes/font_size = 46
+theme_override_styles/normal = SubResource("StyleBoxFlat_xxjrc")
+theme_override_styles/hover = ExtResource("5_ayd61")
+text = "ENTER"
+
+[connection signal="pressed" from="Input/EnterButton/Enter" to="." method="_on_enter_pressed"]

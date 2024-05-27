@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bh7qip5g8pa3y"]
+
+[ext_resource type="Script" path="res://scripts/gameScene/player/2. Zoro/slash_attack.gd" id="1_37jcm"]
+[ext_resource type="Texture2D" uid="uid://b3l8g33ilo75y" path="res://assets/gameScene/players/2. Zoro/slashAttack.png" id="1_e8d20"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5mc2c"]
+radius = 21.0
+
+[node name="SlashAttack" type="Area2D"]
+script = ExtResource("1_37jcm")
+
+[node name="SlashSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_e8d20")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5mc2c")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

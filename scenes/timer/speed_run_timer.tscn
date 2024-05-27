@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://dleawv4naxewp"]
+
+[ext_resource type="FontFile" uid="uid://cs8jcn8wcxp63" path="res://assets/mainMenu/font/TheRumIsGone-Wy1nG.ttf" id="1_np83u"]
+
+[node name="SpeedRunTimer" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("1_np83u")
+theme_override_font_sizes/font_size = 56
+text = "00 : 00 : 00"

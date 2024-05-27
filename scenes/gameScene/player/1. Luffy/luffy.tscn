@@ -1,0 +1,80 @@
+[gd_scene load_steps=12 format=3 uid="uid://brsrh0jce1485"]
+
+[ext_resource type="Texture2D" uid="uid://4v6drgv1nxca" path="res://assets/gameScene/players/1. Luffy/luffy_attack.png" id="1_e7i7y"]
+[ext_resource type="Script" path="res://scripts/gameScene/player/1. Luffy/luffy.gd" id="1_saq7e"]
+[ext_resource type="Texture2D" uid="uid://bi8w040bdgnh0" path="res://assets/gameScene/players/1. Luffy/luffy_idle.png" id="2_22oge"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyg17"]
+atlas = ExtResource("1_e7i7y")
+region = Rect2(0, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efg38"]
+atlas = ExtResource("1_e7i7y")
+region = Rect2(192, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xcho"]
+atlas = ExtResource("1_e7i7y")
+region = Rect2(384, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3x8nk"]
+atlas = ExtResource("1_e7i7y")
+region = Rect2(576, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfyae"]
+atlas = ExtResource("1_e7i7y")
+region = Rect2(768, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4gce"]
+atlas = ExtResource("1_e7i7y")
+region = Rect2(960, 0, 192, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a2tl3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyg17")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efg38")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xcho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3x8nk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfyae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4gce")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_22oge")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k0ajp"]
+
+[node name="Luffy" type="Area2D"]
+script = ExtResource("1_saq7e")
+
+[node name="LuffySprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_a2tl3")
+animation = &"attack"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(24, -91)
+shape = SubResource("CircleShape2D_k0ajp")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="animation_finished" from="LuffySprite" to="." method="_on_luffy_sprite_animation_finished"]

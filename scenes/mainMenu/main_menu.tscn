@@ -1,0 +1,123 @@
+[gd_scene load_steps=12 format=3 uid="uid://qsocg6ovl3g4"]
+
+[ext_resource type="Texture2D" uid="uid://u3lkjbewkfg0" path="res://assets/mainMenu/Going Merry/goingMerry.png" id="1_g88oa"]
+[ext_resource type="Texture2D" uid="uid://lkbmprtum4qt" path="res://assets/mainMenu/knockOffStream/knockoffstream.png" id="1_hiyob"]
+[ext_resource type="Script" path="res://scripts/mainMenu/main_menu.gd" id="1_j2uj4"]
+[ext_resource type="FontFile" uid="uid://cs8jcn8wcxp63" path="res://assets/mainMenu/font/TheRumIsGone-Wy1nG.ttf" id="4_ypr45"]
+[ext_resource type="StyleBox" uid="uid://bgboniungsjl1" path="res://scenes/mainMenu/main_menuButton.tres" id="6_f36lj"]
+[ext_resource type="Texture2D" uid="uid://cnuiawk0b0ld7" path="res://assets/leaderboardScene/buttons/pirate1.png" id="6_xb7v2"]
+[ext_resource type="Texture2D" uid="uid://bwo7cgrd5dt5" path="res://assets/leaderboardScene/buttons/pirate.png" id="7_eepav"]
+[ext_resource type="AudioStream" uid="uid://cvdswap3ret56" path="res://assets/music/one piece op song (beepbox)/pizzicato string version.mp3" id="8_r2wat"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k5pmx"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6voa3"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_skjpu"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j2uj4")
+
+[node name="bg" type="Node2D" parent="."]
+
+[node name="Knockoffstream" type="Sprite2D" parent="bg"]
+position = Vector2(578, 425.5)
+scale = Vector2(18.0938, 11.1974)
+texture = ExtResource("1_hiyob")
+
+[node name="GoingMerry" type="Sprite2D" parent="bg"]
+position = Vector2(845, 640)
+texture = ExtResource("1_g88oa")
+
+[node name="buttons" type="Node2D" parent="."]
+
+[node name="start" type="Node2D" parent="buttons"]
+
+[node name="Pirate" type="Sprite2D" parent="buttons/start"]
+position = Vector2(342, 351)
+texture = ExtResource("7_eepav")
+
+[node name="Start" type="Button" parent="buttons/start"]
+offset_left = 291.0
+offset_top = 316.0
+offset_right = 506.0
+offset_bottom = 379.0
+theme_override_colors/font_color = Color(0, 0.666667, 0.686275, 1)
+theme_override_fonts/font = ExtResource("4_ypr45")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_k5pmx")
+theme_override_styles/hover = ExtResource("6_f36lj")
+text = "Start"
+
+[node name="leaderboard" type="Node2D" parent="buttons"]
+
+[node name="Pirate2" type="Sprite2D" parent="buttons/leaderboard"]
+position = Vector2(319, 503.875)
+scale = Vector2(1.2513, 0.97204)
+texture = ExtResource("7_eepav")
+
+[node name="Pirate1" type="Sprite2D" parent="buttons/leaderboard"]
+position = Vector2(544.75, 503.5)
+scale = Vector2(1.13721, 0.980263)
+texture = ExtResource("6_xb7v2")
+
+[node name="Leaderboard" type="Button" parent="buttons/leaderboard"]
+offset_left = 243.0
+offset_top = 477.0
+offset_right = 640.0
+offset_bottom = 526.0
+theme_override_colors/font_color = Color(0, 0.666667, 0.686275, 1)
+theme_override_fonts/font = ExtResource("4_ypr45")
+theme_override_font_sizes/font_size = 39
+theme_override_styles/normal = SubResource("StyleBoxFlat_6voa3")
+theme_override_styles/hover = ExtResource("6_f36lj")
+text = "LEADERBOARD"
+
+[node name="quit" type="Node2D" parent="buttons"]
+
+[node name="Pirate" type="Sprite2D" parent="buttons/quit"]
+position = Vector2(348, 652)
+texture = ExtResource("7_eepav")
+
+[node name="Quit" type="Button" parent="buttons/quit"]
+offset_left = 302.0
+offset_top = 612.0
+offset_right = 498.0
+offset_bottom = 695.0
+theme_override_colors/font_color = Color(0, 0.667466, 0.685341, 1)
+theme_override_fonts/font = ExtResource("4_ypr45")
+theme_override_font_sizes/font_size = 66
+theme_override_styles/normal = SubResource("StyleBoxFlat_skjpu")
+theme_override_styles/hover = ExtResource("6_f36lj")
+text = "Quit"
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_r2wat")
+autoplay = true
+
+[node name="Heading" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -519.0
+offset_top = 86.0
+offset_right = 516.0
+offset_bottom = 182.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_ypr45")
+theme_override_font_sizes/font_size = 76
+text = "ASCEND TO SKYPIEA"
+
+[connection signal="pressed" from="buttons/start/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="buttons/leaderboard/Leaderboard" to="." method="_on_leaderboard_pressed"]
+[connection signal="pressed" from="buttons/quit/Quit" to="." method="_on_quit_pressed"]
