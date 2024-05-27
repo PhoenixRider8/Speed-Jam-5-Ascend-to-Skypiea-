@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cvdswap3ret56"
+path="res://.godot/imported/pizzicato string version.mp3-60d6061e0cef84eac93c8a0b48b56831.mp3str"
+
+[deps]
+
+source_file="res://assets/music/one piece op song (beepbox)/pizzicato string version.mp3"
+dest_files=["res://.godot/imported/pizzicato string version.mp3-60d6061e0cef84eac93c8a0b48b56831.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
